@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Paws & Play SA</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  /* =====================
+     Pixel-perfect presets
+     ===================== */
+  :root{
+    --container:1152px;              /* screenshot canvas width */
+    --brand:#1e3a2a;                 /* logo + CTA */
+    --brand-strong:#153221;
+    --brand-tint:#e9f4ea;
+    --ink:#0b0b0b;
+    --muted:#5d646b;
+    --beige:#f5efe7;                 /* hero bg */
+    --card:#ffffff;
+    --radius:14px;
+    --shadow:0 10px 28px rgba(0,0,0,.10);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;
+    color:var(--ink); background:#fff;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  }
+  .container{width:min(100%,var(--container)); margin-inline:auto; padding-inline:28px}
+
+  /* ===== Header ===== */
+  header{position:sticky; top:0; z-index:10; background:#fff; border-bottom:1px solid #eee}
+  .nav{height:80px; display:flex; align-items:center; justify-content:space-between}
+  .brand{display:flex; align-items:baseline; gap:10px; text-decoration:none}
+  .brand-title{font-weight:800; color:var(--brand); font-size:32px; letter-spacing:.2px}
+  .brand-suffix{color:#1c6b40; font-weight:800}
+  .menu{display:flex; gap:36px; list-style:none; margin:0; padding:0}
+  .menu a{font-weight:600; color:var(--ink); text-decoration:none}
+  .menu a:hover{color:var(--brand)}
+  .hamburger{display:none; background:transparent; border:0; padding:8px; margin:-8px}
+  .hamburger svg{width:28px; height:28px}
+
+  @media (max-width: 860px){
+    .hamburger{display:block}
+    .menu{
+      position:fixed; inset:auto 0 0 0; top:80px;
+      background:#fff; border-top:1px solid #eee;
+      display:none; flex-direction:column; gap:18px; padding:18px 28px 28px;
+    }
+    .menu.open{display:flex}
+  }
+
+  /* ===== Hero ===== */
+  .hero{background:var(--beige); border-bottom:1px solid #eadfce}
+  .hero-wrap{
+    min-height:560px;
+    display:grid; grid-template-columns:1.05fr .95fr; gap:24px;
+    align-items:center;
+  }
+  .hero-media{padding-block:32px}
+  .hero-media img{
+    width:100%; height:auto; border-radius:22px; box-shadow:var(--shadow); object-fit:cover
+  }
+  .hero-copy{padding-right:6px}
+  .hero h1{
+    margin:0 0 26px 0;
+    font-weight:800; letter-spacing:-.02em; line-height:1.03;
+    /* calibrated sizes for the mock */
+    font-size: clamp(36px, 4.4vw + 12px, 64px);
+  }
+  .cta{
+    display:inline-flex; align-items:center; justify-content:center; gap:10px;
+    background:var(--brand); color:#fff; font-weight:800;
+    border:0; padding:16px 24px; border-radius:12px; cursor:pointer;
+    box-shadow:var(--shadow);
+    transition:.18s transform ease,.18s filter ease,.18s background ease;
+    font-size:18px;
+  }
+  .cta:hover{transform:translateY(-1px); filter:brightness(1.05)}
+  .cta:focus-visible{outline:3px solid color-mix(in oklab, var(--brand) 40%, transparent)}
+
+  @media (max-width: 980px){
+    .hero-wrap{grid-template-columns:1fr}
+    .hero-copy{order:-1; text-align:left}
+  }
+
+  /* ===== Section heading ===== */
+  .section{padding:48px 0}
+  .section h2{
+    text-align:center; margin:0 0 22px; letter-spacing:-.01em;
+    font-weight:800; font-size: clamp(24px, 2.2vw + 12px, 36px);
+  }
+
+  /* ===== Products ===== */
+  .products{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:22px;
+  }
+  @media (max-width: 980px){ .products{grid-template-columns:repeat(2,1fr)} }
+  @media (max-width: 540px){ .products{grid-template-columns:1fr} }
+
+  .card{
+    background:var(--card); border-radius:16px; box-shadow:var(--shadow);
+    overflow:hidden; display:flex; flex-direction:column;
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .card:hover{transform:translateY(-4px); box-shadow:0 18px 38px rgba(0,0,0,.12)}
+  .thumb{aspect-ratio: 4/3; display:grid; place-items:center; background:#f7f7f7}
+  .thumb img{width:100%; height:100%; object-fit:cover}
+  .body{padding:16px 16px 18px}
+  .title{margin:0 0 6px; font-weight:700}
+  .price{margin:0; color:var(--muted); font-weight:600}
+  .add{margin-top:12px; border:2px solid var(--brand); color:var(--brand); background:#fff;
+       padding:10px 12px; border-radius:10px; font-weight:700; cursor:pointer}
+  .add:hover{background:var(--brand); color:#fff}
+
+  /* ===== Promo banner ===== */
+  .promo{
+    margin-top:26px; background:var(--brand-tint); color:var(--brand-strong);
+    padding:22px; border-radius:18px; text-align:center; font-weight:800;
+    font-size: clamp(16px, 1.1vw + 12px, 24px); box-shadow:var(--shadow)
+  }
+
+  /* ===== Footer ===== */
+  footer{padding:44px 0; text-align:center; color:#6b7280}
+</style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <a href="#" class="brand" aria-label="Paws & Play SA">
+        <span class="brand-title">Paws &amp; Play</span><span class="brand-suffix">SA</span>
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M3 6h18M3 12h18M3 18h18"/>
+        </svg>
+      </button>
+      <ul class="menu" id="menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#products">Shop</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="container hero-wrap">
+      <div class="hero-media" aria-hidden="true">
+        <!-- swap with your asset for true match -->
+        <img src="https://images.unsplash.com/photo-1629459811267-3f6fba58828d?q=80&w=1600&auto=format&fit=crop" alt="Golden retriever on a plush bed">
+      </div>
+      <div class="hero-copy">
+        <h1>Give your pet<br>the comfort<br>they deserve</h1>
+        <button class="cta" id="shopNow">Shop Now</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured -->
+  <section class="section container" id="products" aria-labelledby="feat-title">
+    <h2 id="feat-title">Featured Products</h2>
+
+    <div class="products" id="productGrid">
+      <!-- product cards rendered from data below for easy cart hookup -->
+    </div>
+
+    <p class="promo">Free delivery on orders over <strong>R 500</strong></p>
+  </section>
+
+  <footer id="about">
+    © <span id="year"></span> Paws &amp; Play SA · All rights reserved.
+  </footer>
+
+<script>
+  // ------- Configurable product data (cart-ready) -------
+  const products = [
+    {
+      id:'glove', title:'Pet Grooming Glove', price:199,
+      img:'https://images.unsplash.com/photo-1617896859261-21ae79b5b250?q=80&w=800&auto=format&fit=crop',
+      alt:'Blue pet grooming glove'
+    },
+    {
+      id:'bowl', title:'Slow Feeder Bowl', price:249,
+      img:'https://images.unsplash.com/photo-1619982299644-19e93734072a?q=80&w=800&auto=format&fit=crop',
+      alt:'Turquoise slow feeder bowl'
+    },
+    {
+      id:'ball', title:'Interactive Treat Ball Toy', price:229,
+      img:'https://images.unsplash.com/photo-1583512603702-560f9b814a07?q=80&w=800&auto=format&fit=crop',
+      alt:'Green interactive treat ball toy'
+    },
+    {
+      id:'seat-cover', title:'Pet Car Seat Cover', price:499,
+      img:'https://images.unsplash.com/photo-1617093727343-37469801b324?q=80&w=800&auto=format&fit=crop',
+      alt:'Black pet car seat cover'
+    }
+  ];
+
+  // ------- Render product cards -------
+  const grid = document.getElementById('productGrid');
+  grid.innerHTML = products.map(p => `
+    <article class="card" data-id="${p.id}">
+      <div class="thumb"><img src="${p.img}" alt="${p.alt}"></div>
+      <div class="body">
+        <h3 class="title">${p.title}</h3>
+        <p class="price">R ${p.price}</p>
+        <button class="add" data-add="${p.id}" aria-label="Add ${p.title} to cart">Add to cart</button>
+      </div>
+    </article>
+  `).join('');
+
+  // ------- Lightweight cart store (stub) -------
+  const cart = new Map(); // id -> qty
+  function addToCart(id){
+    cart.set(id, (cart.get(id) || 0) + 1);
+    console.log('Cart:', Object.fromEntries(cart)); // hook here to your real cart
+  }
+  grid.addEventListener('click', (e)=>{
+    const id = e.target?.dataset?.add;
+    if(!id) return;
+    addToCart(id);
+    e.target.textContent = 'Added ✓';
+    setTimeout(()=> e.target.textContent = 'Add to cart', 900);
+  });
+
+  // ------- Interactions -------
+  document.getElementById('shopNow').addEventListener('click', () => {
+    document.querySelector('#products').scrollIntoView({behavior:'smooth'});
+  });
+
+  const burger = document.getElementById('hamburger');
+  const menu = document.getElementById('menu');
+  burger.addEventListener('click', ()=>{
+    const open = menu.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open);
+  });
+  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+    if(menu.classList.contains('open')) { menu.classList.remove('open'); burger.setAttribute('aria-expanded','false'); }
+  }));
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
