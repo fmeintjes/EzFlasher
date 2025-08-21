@@ -17,7 +17,7 @@ Public Class GetDownloads
         Dim respRead As New StreamReader(httpResp.GetResponseStream())
         Dim respResult As String = respRead.ReadToEnd
         If returnUrlOnly = True Then
-            Dim respUrl = httpReq.GetResponse().ResponseUri.AbsoluteUri
+            Dim respUrl = httpResp.ResponseUri.AbsoluteUri
             Return respUrl
         End If
         Return respResult
