@@ -3,12 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "EzFlasher", "EzFlasher\EzFlasher.vbproj", "{1E462D8C-74B1-480A-A607-B309B41A5F60}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "EzFlasher.Tests", "EzFlasher.Tests\EzFlasher.Tests.vbproj", "{DD37E4B6-44F4-4370-BCBD-EB5A64F7C75E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+                {DD37E4B6-44F4-4370-BCBD-EB5A64F7C75E}.Debug|x86.ActiveCfg = Debug|AnyCPU
+                {DD37E4B6-44F4-4370-BCBD-EB5A64F7C75E}.Debug|x86.Build.0 = Debug|AnyCPU
+                {DD37E4B6-44F4-4370-BCBD-EB5A64F7C75E}.Release|x86.ActiveCfg = Release|AnyCPU
+                {DD37E4B6-44F4-4370-BCBD-EB5A64F7C75E}.Release|x86.Build.0 = Release|AnyCPU
 		{1E462D8C-74B1-480A-A607-B309B41A5F60}.Debug|x86.ActiveCfg = Debug|x86
 		{1E462D8C-74B1-480A-A607-B309B41A5F60}.Debug|x86.Build.0 = Debug|x86
 		{1E462D8C-74B1-480A-A607-B309B41A5F60}.Release|x86.ActiveCfg = Release|x86
