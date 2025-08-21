@@ -192,7 +192,7 @@ Public Class Form1
             Select Case ComboBox1.SelectedIndex
                 Case 0 'TWRP for KK
                     recovFile &= "twrp_kk.img"
-                Case 1 'Philz for KK
+                Case 1 'PhilZ for KK
                     recovFile &= "philz_kk.img"
                 Case 2 'CWM for KK
                     recovFile &= "cwm_kk.img"
